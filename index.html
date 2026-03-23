@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Customer Segmentation Dashboard</title>
+
+<style>
+body{
+    font-family: Arial;
+    background:#eef2f7;
+    text-align:center;
+}
+
+h1{
+    margin-top:30px;
+    color:#333;
+}
+
+.container{
+    width:80%;
+    margin:auto;
+}
+
+.card{
+    display:inline-block;
+    width:200px;
+    padding:20px;
+    margin:10px;
+    border-radius:10px;
+    color:white;
+    font-size:18px;
+}
+.high {
+    background-color:#e74c3c;
+    color:white;
+    font-weight:bold;
+}
+
+.medium {
+    background-color:#f39c12;
+    color:white;
+    font-weight:bold;
+}
+
+.low {
+    background-color:#27ae60;
+    color:white;
+    font-weight:bold;
+}
+.high{ background:#e74c3c; }
+.medium{ background:#f39c12; }
+.low{ background:#27ae60; }
+table{
+    margin:auto;
+    margin-top:30px;
+    width:70%;
+    border-collapse:collapse;
+    background:white;
+}
+
+th,td{
+    padding:12px;
+    border:1px solid #ccc;
+}
+
+th{
+    background:#34495e;
+    color:white;
+}
+.recommendation{
+    width:60%;
+    margin:30px auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    text-align:left;
+}
+
+.recommendation h2{
+    color:#34495e;
+}
+
+.recommendation p{
+    font-size:18px;
+    line-height:1.8;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Customer Segmentation Dashboard</h1>
+
+<div class="container">
+
+<div class="card high">
+High Value Customers
+<br>
+4
+</div>
+
+<div class="card medium">
+Medium Value Customers
+<br>
+1
+</div>
+
+<div class="card low">
+Low Value Customers
+<br>
+2
+</div>
+
+</div>
+
+<input type="text" id="searchInput" placeholder="Search customer..." onkeyup="searchCustomer()" style="padding:10px; width:250px; margin-top:20px; border-radius:5px; border:1px solid #ccc;">
+<br><br>
+
+<button onclick="filterSegment('All')" style="padding:8px 15px;">All</button>
+<button onclick="filterSegment('High Value')" style="padding:8px 15px;">High Value</button>
+<button onclick="filterSegment('Medium Value')" style="padding:8px 15px;">Medium Value</button>
+<button onclick="filterSegment('Low Value')" style="padding:8px 15px;">Low Value</button>
+
+<table id="customerTable">
+<tr>
+<th>Customer</th>
+<th>Total Spending</th>
+<th>Segment</th>
+</tr>
+
+<tr>
+<td>Raj</td>
+<td>6500</td>
+<td class="high">High Value</td>
+</tr>
+
+<tr>
+<td>Anu</td>
+<td>4500</td>
+<td class="high">High Value</td>
+</tr>
+
+<tr>
+<td>Ravi</td>
+<td>9000</td>
+<td class="high">High Value</td>
+</tr>
+
+<tr>
+<td>Priya</td>
+<td>1200</td>
+<td class="low">Low Value</td>
+</tr>
+
+<tr>
+<td>Sneha</td>
+<td>2200</td>
+<td class="medium">Medium Value</td>
+</tr>
+
+<tr>
+<td>Kiran</td>
+<td>500</td>
+<td class="low">Low Value</td>
+</tr>
+
+</table>
+
+<div class="recommendation">
+    <h2>Business Recommendations</h2>
+    <p>High Value Customers → Offer premium membership</p>
+    <p>Medium Value Customers → Provide loyalty rewards</p>
+    <p>Low Value Customers → Send discount coupons</p>
+</div>
+</body>
+<script>
+function searchCustomer() {
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let table = document.getElementById("customerTable");
+    let rows = table.getElementsByTagName("tr");
+
+    for (let i = 1; i < rows.length; i++) {
+        let name = rows[i].getElementsByTagName("td")[0];
+
+        if (name) {
+            let text = name.textContent.toLowerCase();
+            rows[i].style.display = text.includes(input) ? "" : "none";
+        }
+    }
+}
+
+function filterSegment(segment) {
+    let table = document.getElementById("customerTable");
+    let rows = table.getElementsByTagName("tr");
+
+    for (let i = 1; i < rows.length; i++) {
+        let seg = rows[i].getElementsByTagName("td")[2];
+
+        if (segment === "All") {
+            rows[i].style.display = "";
+        } else {
+            rows[i].style.display =
+                seg.textContent.trim() === segment ? "" : "none";
+        }
+    }
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<h2>Customer Segment Distribution</h2>
+
+<div style="width:500px; margin:30px auto;">
+    <canvas id="myChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+const ctx = document.getElementById('myChart');
+
+new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ['High Value', 'Medium Value', 'Low Value'],
+        datasets: [{
+            data: [4, 1, 2],
+            backgroundColor: ['#e74c3c', '#f39c12', '#27ae60']
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: true
+    }
+});
+</script>
+</body>
+</html>

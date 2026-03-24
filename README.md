@@ -62,20 +62,35 @@ Before running the project, ensure the following are installed:
 ## Step 1 — Database Setup
 
 Execute the SQL file in MySQL:
+
+```sql
 database.sql
+```
+
 This creates the customer dataset required for segmentation.
+
 
 ## Step 2 — Backend Execution
 
 Compile and run the Java file:
+
+```bash
 javac CustomerSegmentationApp.java
 java CustomerSegmentationApp
+```
+
 This processes customer data using JDBC.
+
 ## Step 3 — Frontend Execution
 
 Open:
+
+```bash
 index.html
-using **Live Server in VS Code** or directly in browser.
+```
+
+using Live Server in VS Code or browser.
+
 # 📈 Output
 
 The dashboard displays:

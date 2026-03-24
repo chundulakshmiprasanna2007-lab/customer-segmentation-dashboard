@@ -110,6 +110,5 @@ The dashboard displays:
 
 This project demonstrates integration of database management, backend processing, and frontend visualization to create a practical analytics dashboard.
 
-It reflects a real-world business analytics use case suitable for portfolio, resume, and professional showcase.
 
 

@@ -1,50 +1,100 @@
-# Automated Customer Segmentation Analytics Dashboard
+# 📊 Automated Customer Segmentation Analytics Dashboard
 
-## Project Overview
+A professional analytics dashboard developed using **SQL, JDBC, Java, HTML, CSS, and JavaScript** to classify customers based on spending behavior and generate business insights for business decision-making.
 
-This project is an interactive customer segmentation analytics dashboard developed using SQL, JDBC, HTML, CSS, and JavaScript. It analyzes customer spending data and classifies customers into High Value, Medium Value, and Low Value segments to support business decision-making.
+# 🌐 Live Project
 
-## Objective
+🔗 **Live Dashboard:https://chundulakshmiprasanna2007-lab.github.io/customer-segmentation-dashboard/
 
-The main objective of this project is to transform raw customer spending data stored in a database into meaningful business insights through segmentation and visual representation.
 
-## Technologies Used
+# 📁 Repository Link
 
-* SQL for customer data storage and segmentation logic
-* JDBC for database connectivity between Java and SQL
-* Java for processing customer records
-* HTML and CSS for dashboard design
-* JavaScript for search, filtering, and chart visualization
+🔗 **GitHub Repository:https://github.com/chundulakshmiprasanna2007-lab/customer-segmentation-dashboard
 
-## Features
+# 🎯 Project Objective
 
-* Customer segmentation based on total spending
-* Search functionality to find customers quickly
-* Segment filtering (High Value, Medium Value, Low Value)
-* Pie chart visualization of customer distribution
-* Business recommendation section for decision support
+The objective of this project is to transform raw customer spending data stored in a database into meaningful customer segments and visual analytics.
 
-## Customer Segmentation Logic
+Customer categories include:
 
-* High Value Customers: Spending above defined threshold
-* Medium Value Customers: Moderate spending range
-* Low Value Customers: Lower spending range
+* High Value Customers
+* Medium Value Customers
+* Low Value Customers
 
-## Business Use Case
+This helps businesses understand customer behavior and improve decision-making.
 
-This project helps businesses identify valuable customers, understand spending patterns, and plan targeted marketing strategies.
+# 🛠️ Technologies Used
 
-## Files Included
+| Layer                | Technology            |
+| -------------------- | --------------------- |
+| Database             | SQL                   |
+| Backend Connectivity | JDBC                  |
+| Programming Language | Java                  |
+| Frontend             | HTML, CSS, JavaScript |
+| Data Visualization   | Chart.js              |
+# ✨ Features
 
-* CustomerSegmentationApp.java
-* database.sql
-* index.html
-* mysql-connector-j-9.6.0.jar
+* Customer segmentation based on spending value
+* Search functionality for customer records
+* Filter customers by segment
+* Interactive analytics dashboard
+* Pie chart visualization
+* Business recommendation system
+# 📂 Project Structure
+CustomerSegmentationApp.java
+database.sql
+index.html
+mysql-connector-j-9.6.0.jar
+README.md
 
-## Output
+# ⚙️ System Requirements
 
-The final output is displayed as an interactive dashboard showing customer segments, spending details, and analytics.
+Before running the project, ensure the following are installed:
 
-## Conclusion
+* Java Development Kit (JDK)
+* MySQL Server
+* JDBC Connector
+* Web Browser
+* VS Code (recommended)
 
-This project demonstrates how database management, backend connectivity, and frontend visualization can be integrated to create a practical analytics solution.
+# 🚀 Execution Steps
+
+## Step 1 — Database Setup
+
+Execute the SQL file in MySQL:
+database.sql
+This creates the customer dataset required for segmentation.
+
+## Step 2 — Backend Execution
+
+Compile and run the Java file:
+javac CustomerSegmentationApp.java
+java CustomerSegmentationApp
+This processes customer data using JDBC.
+## Step 3 — Frontend Execution
+
+Open:
+index.html
+using **Live Server in VS Code** or directly in browser.
+# 📈 Output
+
+The dashboard displays:
+
+* Customer names
+* Total spending
+* Segment classification
+* Segment statistics
+* Business recommendations
+* Pie chart distribution
+# 💼 Business Recommendation Logic
+
+* High Value Customers → Offer premium membership
+* Medium Value Customers → Provide loyalty rewards
+* Low Value Customers → Send discount coupons
+# ✅ Conclusion
+
+This project demonstrates integration of database management, backend processing, and frontend visualization to create a practical analytics dashboard.
+
+It reflects a real-world business analytics use case suitable for portfolio, resume, and professional showcase.
+
+

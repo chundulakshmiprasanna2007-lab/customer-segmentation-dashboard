@@ -5,234 +5,283 @@
 
 <style>
 body{
-    font-family: Arial;
-    background:#eef2f7;
-    text-align:center;
+    font-family: Arial, sans-serif;
+    background:#f4f6f9;
+    margin:0;
+    padding:0;
 }
 
+/* Header */
 h1{
-    margin-top:30px;
-    color:#333;
+    text-align:center;
+    color:#2c3e50;
+    margin-top:20px;
+    font-size:34px;
 }
 
-.container{
-    width:80%;
-    margin:auto;
+.subtitle{
+    text-align:center;
+    color:#7f8c8d;
+    font-size:18px;
+    margin-bottom:30px;
+}
+
+/* Cards */
+.cards{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    margin-bottom:30px;
 }
 
 .card{
-    display:inline-block;
-    width:200px;
-    padding:20px;
-    margin:10px;
-    border-radius:10px;
+    width:250px;
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
     color:white;
-    font-size:18px;
-}
-.high {
-    background-color:#e74c3c;
-    color:white;
+    font-size:20px;
     font-weight:bold;
+    box-shadow:0 6px 15px rgba(0,0,0,0.12);
+    transition:0.3s;
 }
 
-.medium {
-    background-color:#f39c12;
-    color:white;
-    font-weight:bold;
+.card:hover{
+    transform:translateY(-5px);
+     transition:0.3s;
 }
 
-.low {
-    background-color:#27ae60;
-    color:white;
+.high{
+    color:#e74c3c;
     font-weight:bold;
+    background:none;
 }
-.high{ background:#e74c3c; }
-.medium{ background:#f39c12; }
-.low{ background:#27ae60; }
+
+.medium{
+    color:#f39c12;
+    font-weight:bold;
+    background:none;
+}
+
+.low{
+    color:#27ae60;
+    font-weight:bold;
+    background:none;
+}
+
+/* Search */
+input{
+    display:block;
+    margin:20px auto;
+    padding:12px;
+    width:320px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
+}
+
+/* Buttons */
+.buttons{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+button{
+    padding:10px 18px;
+    border:none;
+    border-radius:6px;
+    background:#5d6d7e;
+    color:white;
+    cursor:pointer;
+    font-size:15px;
+    margin:5px;
+}
+
+button:hover{
+    background:#4b5d73;
+}
+
+/* Table */
+.table-container{
+    width:48%;
+    margin:30px auto;
+    max-height:300px;
+    overflow-y:auto;
+    border-radius:12px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+
 table{
-    margin:auto;
-    margin-top:30px;
-    width:70%;
+    width:100%;
     border-collapse:collapse;
     background:white;
 }
 
 th,td{
     padding:12px;
-    border:1px solid #ccc;
+    border:1px solid #ddd;
+    text-align:center;
 }
 
 th{
-    background:#34495e;
+    background:#5d6d7e;
     color:white;
+    position:sticky;
+    top:0;
 }
+tr:hover{
+    background:#f1f5f9;
+}
+
+/* Recommendation */
 .recommendation{
     width:60%;
     margin:30px auto;
     background:white;
     padding:20px;
-    border-radius:10px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.1);
-    text-align:left;
+    border-radius:15px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
 }
 
 .recommendation h2{
-    color:#34495e;
+    color:#2c3e50;
 }
 
-.recommendation p{
-    font-size:18px;
-    line-height:1.8;
+/* Chart */
+.chart-container{
+    width:400px;
+    margin:30px auto;
 }
-
 </style>
-
 </head>
 
 <body>
 
-<h1>Customer Segmentation Dashboard</h1>
+<h1>Automated Customer Segmentation Dashboard</h1>
+<p class="subtitle">Business Intelligence for Customer Spending Analysis</p>
 
-<div class="container">
-
-<div class="card high">
-High Value Customers
-<br>
-4
+<div class="cards">
+    <div class="card high" id="highCount">High Value Customers<br>0</div>
+    <div class="card medium" id="mediumCount">Medium Value Customers<br>0</div>
+    <div class="card low" id="lowCount">Low Value Customers<br>0</div>
 </div>
 
-<div class="card medium">
-Medium Value Customers
-<br>
-1
+<input type="text" id="searchInput" placeholder="Search customer..." onkeyup="searchCustomer()">
+
+<div class="buttons">
+    <button onclick="filterSegment('All')">All</button>
+    <button onclick="filterSegment('High Value')">High Value</button>
+    <button onclick="filterSegment('Medium Value')">Medium Value</button>
+    <button onclick="filterSegment('Low Value')">Low Value</button>
 </div>
-
-<div class="card low">
-Low Value Customers
-<br>
-2
-</div>
-
-</div>
-
-<input type="text" id="searchInput" placeholder="Search customer..." onkeyup="searchCustomer()" style="padding:10px; width:250px; margin-top:20px; border-radius:5px; border:1px solid #ccc;">
-<br><br>
-
-<button onclick="filterSegment('All')" style="padding:8px 15px;">All</button>
-<button onclick="filterSegment('High Value')" style="padding:8px 15px;">High Value</button>
-<button onclick="filterSegment('Medium Value')" style="padding:8px 15px;">Medium Value</button>
-<button onclick="filterSegment('Low Value')" style="padding:8px 15px;">Low Value</button>
-
+<div class="table-container">
 <table id="customerTable">
 <tr>
-<th>Customer</th>
-<th>Total Spending</th>
+<th>Customer Name</th>
+<th>Total Spent</th>
 <th>Segment</th>
 </tr>
 
-<tr>
-<td>Raj</td>
-<td>6500</td>
-<td class="high">High Value</td>
-</tr>
-
-<tr>
-<td>Anu</td>
-<td>4500</td>
-<td class="high">High Value</td>
-</tr>
-
-<tr>
-<td>Ravi</td>
-<td>9000</td>
-<td class="high">High Value</td>
-</tr>
-
-<tr>
-<td>Priya</td>
-<td>1200</td>
-<td class="low">Low Value</td>
-</tr>
-
-<tr>
-<td>Sneha</td>
-<td>2200</td>
-<td class="medium">Medium Value</td>
-</tr>
-
-<tr>
-<td>Kiran</td>
-<td>500</td>
-<td class="low">Low Value</td>
-</tr>
+<tr><td>Raj</td><td>6500</td><td class="high">High Value</td></tr>
+<tr><td>Anu</td><td>1800</td><td class="low">Low Value</td></tr>
+<tr><td>Ravi</td><td>4500</td><td class="medium">Medium Value</td></tr>
+<tr><td>Priya</td><td>7200</td><td class="high">High Value</td></tr>
+<tr><td>Arjun</td><td>1500</td><td class="low">Low Value</td></tr>
+<tr><td>Sneha</td><td>3100</td><td class="medium">Medium Value</td></tr>
+<tr><td>Kiran</td><td>9000</td><td class="high">High Value</td></tr>
+<tr><td>Meena</td><td>2200</td><td class="medium">Medium Value</td></tr>
+<tr><td>Vikram</td><td>800</td><td class="low">Low Value</td></tr>
+<tr><td>Neha</td><td>5400</td><td class="high">High Value</td></tr>
+<tr><td>Akhil</td><td>1700</td><td class="low">Low Value</td></tr>
+<tr><td>Divya</td><td>3900</td><td class="medium">Medium Value</td></tr>
+<tr><td>Manoj</td><td>8300</td><td class="high">High Value</td></tr>
+<tr><td>Pooja</td><td>1300</td><td class="low">Low Value</td></tr>
+<tr><td>Rahul</td><td>4800</td><td class="medium">Medium Value</td></tr>
 
 </table>
-
+</div>
 <div class="recommendation">
     <h2>Business Recommendations</h2>
     <p>High Value Customers → Offer premium membership</p>
     <p>Medium Value Customers → Provide loyalty rewards</p>
     <p>Low Value Customers → Send discount coupons</p>
 </div>
-</body>
-<script>
-function searchCustomer() {
-    let input = document.getElementById("searchInput").value.toLowerCase();
-    let table = document.getElementById("customerTable");
-    let rows = table.getElementsByTagName("tr");
-
-    for (let i = 1; i < rows.length; i++) {
-        let name = rows[i].getElementsByTagName("td")[0];
-
-        if (name) {
-            let text = name.textContent.toLowerCase();
-            rows[i].style.display = text.includes(input) ? "" : "none";
-        }
-    }
-}
-
-function filterSegment(segment) {
-    let table = document.getElementById("customerTable");
-    let rows = table.getElementsByTagName("tr");
-
-    for (let i = 1; i < rows.length; i++) {
-        let seg = rows[i].getElementsByTagName("td")[2];
-
-        if (segment === "All") {
-            rows[i].style.display = "";
-        } else {
-            rows[i].style.display =
-                seg.textContent.trim() === segment ? "" : "none";
-        }
-    }
-}
-</script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<h2>Customer Segment Distribution</h2>
-
-<div style="width:500px; margin:30px auto;">
+<h2 style="text-align:center; color:#2c3e50;">Customer Segment Distribution</h2>
+<div class="chart-container">
     <canvas id="myChart"></canvas>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-const ctx = document.getElementById('myChart');
+function searchCustomer() {
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let rows = document.querySelectorAll("#customerTable tr");
 
-new Chart(ctx, {
-    type: 'pie',
-    data: {
-        labels: ['High Value', 'Medium Value', 'Low Value'],
-        datasets: [{
-            data: [4, 1, 2],
-            backgroundColor: ['#e74c3c', '#f39c12', '#27ae60']
+    rows.forEach((row, index) => {
+        if(index === 0) return;
+        let name = row.cells[0].textContent.toLowerCase();
+        row.style.display = name.includes(input) ? "" : "none";
+    });
+}
+
+function filterSegment(segment) {
+    let rows = document.querySelectorAll("#customerTable tr");
+
+    rows.forEach((row, index) => {
+        if(index === 0) return;
+
+        let seg = row.cells[2].textContent.trim();
+
+        if(segment === "All" || seg === segment){
+            row.style.display = "";
+        } else {
+            row.style.display = "none";
+        }
+    });
+}
+
+function updateCounts() {
+    let rows = document.querySelectorAll("#customerTable tr");
+
+    let high = 0, medium = 0, low = 0;
+
+    rows.forEach((row, index) => {
+        if(index === 0) return;
+
+        let segment = row.cells[2].textContent.trim();
+
+        if(segment === "High Value") high++;
+        else if(segment === "Medium Value") medium++;
+        else if(segment === "Low Value") low++;
+    });
+
+    document.getElementById("highCount").innerHTML = "High Value Customers<br>" + high;
+    document.getElementById("mediumCount").innerHTML = "Medium Value Customers<br>" + medium;
+    document.getElementById("lowCount").innerHTML = "Low Value Customers<br>" + low;
+}
+
+updateCounts();
+
+const ctx = document.getElementById('myChart').getContext('2d');
+
+new Chart(ctx,{
+    type:'pie',
+    data:{
+        labels:['High Value','Medium Value','Low Value'],
+        datasets:[{
+            data:[5,5,5],
+            backgroundColor:['#ff6b6b','#f7b267','#6bcB77']
         }]
     },
-    options: {
-        responsive: true,
-        maintainAspectRatio: true
+    options:{
+        responsive:true
     }
+});
+</script>
+
+</body>
+</html>
 });
 </script>
 </body>

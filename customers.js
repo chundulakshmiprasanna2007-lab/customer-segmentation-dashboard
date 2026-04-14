@@ -1,0 +1,21 @@
+const customers = [
+  {name:'Raj', spent:12500.0, segment:'High Value'},
+  {name:'Anu', spent:1800.0, segment:'Low Value'},
+  {name:'Ravi', spent:4500.0, segment:'Medium Value'},
+  {name:'Priya', spent:7200.0, segment:'High Value'},
+  {name:'Arjun', spent:1500.0, segment:'Low Value'},
+  {name:'Sneha', spent:3100.0, segment:'Medium Value'},
+  {name:'Kiran', spent:9000.0, segment:'High Value'},
+  {name:'Meena', spent:2200.0, segment:'Medium Value'},
+  {name:'Vikram', spent:800.0, segment:'Low Value'},
+  {name:'Neha', spent:5400.0, segment:'High Value'},
+  {name:'Akhil', spent:1700.0, segment:'Low Value'},
+  {name:'Divya', spent:3900.0, segment:'Medium Value'},
+  {name:'Manoj', spent:8300.0, segment:'High Value'},
+  {name:'Pooja', spent:1300.0, segment:'Low Value'},
+  {name:'Rahul', spent:4800.0, segment:'Medium Value'},
+  {name:'ramu', spent:2000.0, segment:'Medium Value'},
+  {name:'Ramu', spent:2000.0, segment:'Medium Value'},
+  {name:'Sita', spent:5000.0, segment:'High Value'},
+  {name:'Tinku', spent:2000.0, segment:'Medium Value'}
+];
